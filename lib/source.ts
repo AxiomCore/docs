@@ -1,12 +1,32 @@
 import { docs } from 'fumadocs-mdx:collections/server';
 import { type InferPageType, loader } from 'fumadocs-core/source';
 import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
+import { createElement } from 'react';
+import {
+  BookIcon,
+  RocketIcon,
+  CpuIcon,
+  CodeIcon,
+  ShieldCheckIcon,
+  TerminalIcon,
+  MapIcon
+} from 'lucide-react';
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
   baseUrl: '/docs',
   source: docs.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
+  icon(key) {
+    if (key === 'introduction') return createElement(BookIcon);
+    if (key === 'getting-started') return createElement(RocketIcon);
+    if (key === 'core-concepts') return createElement(CpuIcon);
+    if (key === 'acore-language') return createElement(CodeIcon);
+    if (key === 'client-integration') return createElement(TerminalIcon);
+    if (key === 'cloud-security') return createElement(ShieldCheckIcon);
+    if (key === 'reference') return createElement(BookIcon);
+    if (key === 'roadmap') return createElement(MapIcon);
+  },
 });
 
 export function getPageImage(page: InferPageType<typeof source>) {
