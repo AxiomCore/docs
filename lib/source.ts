@@ -14,7 +14,7 @@ import {
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
-  baseUrl: '/docs',
+  baseUrl: '/',
   source: docs.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
   icon(key) {
